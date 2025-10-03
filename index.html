@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Processing Suite | Web Tools</title>
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/browser-image-compression@2.0.2/dist/browser-image-compression.js"></script>
+</head>
+<body>
+
+    <header class="header">
+        <h1>📸 ImageProcessingTool</h1>
+        <p>Transform, compress, and convert your images with our powerful online tools</p>
+    </header>
+
+    <div class="tool-selection-container">
+        <div class="tool-selector active" id="pdf-selector">
+            <h2>1. Image to PDF Converter</h2>
+            <p>Drag & drop up to 100 images, or click</p>
+            <p class="supports">Supports: JPG, PNG, JPEG</p>
+        </div>
+
+        <div class="tool-selector" id="compressor-selector">
+            <h2>2. Image Compressor</h2>
+            <p>Drag & drop an image here, or browse</p>
+            <p class="supports">Supports: JPG, PNG</p>
+        </div>
+    </div>
+
+    <main class="tool-content-area">
+        <div id="status-message" class="status-message"></div>
+        
+        <section id="pdf-tool-interface" class="tool-content active">
+            <div class="upload-box">
+                <input type="file" id="pdf-file-input" multiple accept="image/jpeg, image/png">
+                <label for="pdf-file-input">
+                    <span class="upload-icon">⬆️</span>
+                    Click to browse or Drag & drop images here (Max 100)
+                </label>
+            </div>
+            
+            <div class="image-preview-list" id="pdf-preview-list">
+                <div class="placeholder-preview">No images added yet.</div>
+            </div>
+
+            <div class="tool-actions">
+                <input type="text" id="pdf-file-name" placeholder="Name your PDF file (optional)">
+                <button class="btn btn-primary" id="convert-pdf-btn" disabled>Convert to PDF</button>
+                <button class="btn btn-secondary" id="clear-pdf-btn" disabled>Clear All</button>
+            </div>
+        </section>
+
+        <section id="compressor-tool-interface" class="tool-content hidden">
+            <div class="upload-box">
+                <input type="file" id="compressor-file-input" accept="image/jpeg, image/png">
+                <label for="compressor-file-input">
+                    <span class="upload-icon">⬆️</span>
+                    Click to browse or Drag & drop ONE image
+                </label>
+            </div>
+            
+            <div id="compressor-image-display" class="image-preview-list">
+                 <div class="placeholder-preview">Image selected will appear here.</div>
+            </div>
+
+            <div class="compression-details">
+                <div class="size-detail">
+                    <p>Original Size: <span id="original-size">-- KB</span></p>
+                    <p>New Size: <span id="new-size">-- KB</span></p>
+                </div>
+                <div class="compression-options">
+                    <label for="quality-slider">Compression Quality: <span id="quality-value">70%</span></label>
+                    <input type="range" id="quality-slider" min="10" max="100" value="70">
+                </div>
+            </div>
+
+            <div class="tool-actions">
+                <input type="text" id="compressor-file-name" placeholder="Name your compressed file (optional)">
+                <button class="btn btn-primary" id="compress-download-btn" disabled>Compress & Download</button>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
